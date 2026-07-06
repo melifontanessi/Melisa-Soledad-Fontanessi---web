@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Linkedin, Send, CheckCircle2, Copy, Check, ExternalLink } from 'lucide-react';
+import { db, handleFirestoreError, OperationType } from '../firebase';
+import { collection, doc, setDoc, serverTimestamp } from 'firebase/firestore';
 
 export default function Contact() {
   const [copiedText, setCopiedText] = useState<'email' | 'phone' | null>(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [msg, setMsg] = useState('');
@@ -14,18 +18,42 @@ export default function Contact() {
     setTimeout(() => setCopiedText(null), 2000);
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !email || !msg) return;
-    
-    // Simulate submission
-    setFormSubmitted(true);
-    setName('');
-    setEmail('');
-    setMsg('');
-    setTimeout(() => {
-      setFormSubmitted(false);
-    }, 6000);
+
+    setSubmitting(true);
+    setErrorMessage('');
+
+    try {
+      const messageId = `msg_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+      const messageDocRef = doc(db, 'messages', messageId);
+
+      await setDoc(messageDocRef, {
+        name: name.trim(),
+        email: email.trim(),
+        msg: msg.trim(),
+        createdAt: serverTimestamp(),
+      });
+
+      setFormSubmitted(true);
+      setName('');
+      setEmail('');
+      setMsg('');
+      setTimeout(() => {
+        setFormSubmitted(false);
+      }, 6000);
+    } catch (error) {
+      console.error("Error submitting contact form to Firestore:", error);
+      setErrorMessage("No se pudo enviar el mensaje. Por favor, intenta de nuevo.");
+      try {
+        handleFirestoreError(error, OperationType.WRITE, `messages`);
+      } catch (innerErr) {
+        // Logged
+      }
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -100,7 +128,7 @@ export default function Contact() {
 
                 {/* Location row */}
                 <div className="flex items-center gap-3 p-4.5 bg-white/5 border border-white/10 rounded-2xl">
-                  <div className="text-[#C68E4B]">
+                  <div className="text-[#FF3B7A]">
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
@@ -148,7 +176,7 @@ export default function Contact() {
               {formSubmitted ? (
                 <div className="flex flex-col items-center justify-center text-center h-full min-h-[350px] animate-fadeIn">
                   <div className="w-16 h-16 bg-white/10 border border-white/25 text-white rounded-full flex items-center justify-center mb-6 shadow-md">
-                    <CheckCircle2 className="w-8 h-8 text-rosa" />
+                    <CheckCircle2 className="w-8 h-8 text-[#FF3B7A]" />
                   </div>
                   <h3 className="font-serif text-2xl font-bold text-white mb-2">
                     ¡Mensaje enviado con éxito!
@@ -173,7 +201,7 @@ export default function Contact() {
                       placeholder="Ej. Juan Pérez"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full px-5 py-3.5 bg-white/5 border border-white/15 focus:border-rosa focus:bg-white/10 rounded-2xl focus:outline-hidden text-white text-sm transition-all placeholder:text-slate-500 font-light"
+                      className="w-full px-5 py-3.5 bg-white/5 border border-white/15 focus:border-[#FF3B7A] focus:bg-white/10 rounded-2xl focus:outline-hidden text-white text-sm transition-all placeholder:text-slate-500 font-light"
                     />
                   </div>
 
@@ -187,7 +215,7 @@ export default function Contact() {
                       placeholder="juan@empresa.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full px-5 py-3.5 bg-white/5 border border-white/15 focus:border-rosa focus:bg-white/10 rounded-2xl focus:outline-hidden text-white text-sm transition-all placeholder:text-slate-500 font-light"
+                      className="w-full px-5 py-3.5 bg-white/5 border border-white/15 focus:border-[#FF3B7A] focus:bg-white/10 rounded-2xl focus:outline-hidden text-white text-sm transition-all placeholder:text-slate-500 font-light"
                     />
                   </div>
 
@@ -201,16 +229,23 @@ export default function Contact() {
                       placeholder="¿En qué tipo de proyecto estás pensando trabajar? Detállalo aquí..."
                       value={msg}
                       onChange={(e) => setMsg(e.target.value)}
-                      className="w-full px-5 py-3.5 bg-white/5 border border-white/15 focus:border-rosa focus:bg-white/10 rounded-2xl focus:outline-hidden text-white text-sm transition-all resize-none placeholder:text-slate-500 font-light"
+                      className="w-full px-5 py-3.5 bg-white/5 border border-white/15 focus:border-[#FF3B7A] focus:bg-white/10 rounded-2xl focus:outline-hidden text-white text-sm transition-all resize-none placeholder:text-slate-500 font-light"
                     />
                   </div>
 
+                  {errorMessage && (
+                    <div className="p-4 bg-red-500/15 border border-red-500/30 rounded-2xl text-rose-300 text-xs font-light leading-relaxed animate-fadeIn">
+                      {errorMessage}
+                    </div>
+                  )}
+
                   <button
                     type="submit"
-                    className="w-full inline-flex items-center justify-center gap-2.5 px-6 py-4.5 bg-[#C68E4B] hover:bg-white text-white hover:text-azul rounded-full font-bold text-xs uppercase tracking-widest shadow-md hover:scale-[1.01] active:scale-[0.99] transition-all cursor-pointer"
+                    disabled={submitting}
+                    className="w-full inline-flex items-center justify-center gap-2.5 px-6 py-4.5 bg-[#FF3B7A] hover:bg-[#E22E67] disabled:bg-[#FF3B7A]/50 text-white rounded-full font-bold text-xs uppercase tracking-widest shadow-md hover:scale-[1.01] active:scale-[0.99] disabled:scale-100 disabled:cursor-not-allowed transition-all cursor-pointer"
                   >
-                    Enviar Mensaje
-                    <Send className="w-4 h-4 text-rosa" />
+                     {submitting ? 'Enviando...' : 'Enviar Mensaje'}
+                     <Send className={`w-4 h-4 text-white ${submitting ? 'animate-pulse' : ''}`} />
                   </button>
                 </form>
               )}

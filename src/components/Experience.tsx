@@ -1,214 +1,81 @@
 import React from 'react';
-import { Briefcase, MapPin, Calendar, CheckCircle2, Star, Sparkles } from 'lucide-react';
 
 export default function Experience() {
+  const cases = [
+    {
+      title: 'ExpoFarma20',
+      desc: 'Creación y organización integral del evento para más de 2.500 asistentes del sector farmacéutico.',
+      image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=600&q=80',
+    },
+    {
+      title: 'Marketing Droguería 20 de Junio',
+      desc: 'Creación del área de marketing desde cero. Estrategias, branding, e-commerce y eventos.',
+      image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80',
+    },
+    {
+      title: 'Siempre Bien',
+      desc: 'Desarrollo e implementación del marketplace. Estrategia digital y comunicación.',
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80',
+    },
+    {
+      title: 'Meli & Ma',
+      desc: 'Creación de marca, identidad visual y packaging para línea de productos.',
+      image: 'https://images.unsplash.com/photo-1531223908832-4b578017551b?auto=format&fit=crop&w=600&q=80',
+    },
+  ];
+
   return (
-    <section id="experiencia" className="py-24 bg-blanco border-y border-azul/10">
+    <section id="casos" className="py-20 md:py-24 bg-white border-b border-slate-100">
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         
-        {/* Section Header */}
-        <div className="max-w-3xl mb-16">
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-ocre font-bold mb-3 block">
-            TRAYECTORIA SELECCIONADA
+        {/* Header */}
+        <div className="max-w-3xl mb-12">
+          <span className="font-sans text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#84CC16] block mb-4">
+            ESTRATEGIAS QUE SE TRANSFORMARON EN RESULTADOS
           </span>
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-azul tracking-tight mb-6">
-            Trayectoria Profesional
+          <h2 className="font-serif text-3xl md:text-[38px] font-black leading-[1.15] text-azul tracking-tight">
+            Algunos desafíos que resolví.
           </h2>
-          <p className="font-sans text-lg text-azul/80 leading-relaxed font-light">
-            Más de 15 años cruzando comunicación visual, marketing digital de alta conversión y dirección de marcas. Mi experiencia combina la gestión de presupuestos masivos y equipos regionales en corporaciones con la creación y el impulso de negocios desde sus cimientos. No solo diseño estrategias: sé lo que cuesta y lo que rinde hacerlas realidad.
-          </p>
         </div>
 
-        {/* Experience Sections Split Grid or Continuous Flow */}
-        <div className="space-y-20 max-w-5xl mx-auto">
-          
-          {/* Section 1: Experiencia de Dirección */}
-          <div>
-            <div className="flex items-center gap-3 mb-10 border-b border-azul/5 pb-4">
-              <div className="p-2 bg-azul text-white rounded-full">
-                <Briefcase className="w-5 h-5" />
-              </div>
-              <h3 className="font-serif text-2xl md:text-3xl font-bold text-azul uppercase tracking-tight">
-                Experiencia de Dirección
-              </h3>
-            </div>
-
-            <div className="space-y-12">
-              
-              {/* Job 1: Droguería 20 de Junio */}
-              <div className="relative pl-6 md:pl-10 border-l-2 border-[#C68E4B]/35 py-1">
-                {/* Timeline dot decoration */}
-                <div className="absolute top-2.5 left-[-6px] w-2.5 h-2.5 bg-white border border-[#C68E4B] rounded-full" />
-
-                <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
-                  <div>
-                    <h4 className="font-serif text-2xl font-bold text-azul">
-                      Responsable de Marketing
-                    </h4>
-                    <p className="text-sm font-mono font-bold text-[#C68E4B] uppercase tracking-wider mt-1">
-                      Droguería 20 de Junio
-                    </p>
-                  </div>
-                  <div className="flex flex-col md:items-end text-left md:text-right">
-                    <span className="inline-flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-widest text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full">
-                      <Calendar className="w-3.5 h-3.5 text-ocre" /> 2021 – Actualidad
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-widest text-slate-400 mt-2">
-                      <MapPin className="w-3.5 h-3.5" /> Salud & Distribución a Escala Nacional
-                    </span>
-                  </div>
-                </div>
-
-                {/* Bullets */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-                  <div className="p-5 bg-white border border-slate-100 rounded-2xl shadow-xs hover:border-rosa/40 hover:shadow-sm transition-all duration-300">
-                    <h5 className="font-mono text-[10px] font-bold uppercase tracking-widest text-azul mb-2">Construcción desde cero</h5>
-                    <p className="text-xs text-azul/80 leading-relaxed font-light">
-                      Diseñé y estructuré el departamento de marketing completo de la compañía, creando los procesos, el equipo interno y los tableros de control (KPIs) desde bases nulas.
-                    </p>
-                  </div>
-                  <div className="p-5 bg-white border border-slate-100 rounded-2xl shadow-xs hover:border-rosa/40 hover:shadow-sm transition-all duration-300">
-                    <h5 className="font-mono text-[10px] font-bold uppercase tracking-widest text-azul mb-2">Rebranding 360°</h5>
-                    <p className="text-xs text-azul/80 leading-relaxed font-light">
-                      Lideré la transformación de la identidad corporativa para acompañar la expansión nacional de la empresa.
-                    </p>
-                  </div>
-                  <div className="p-5 bg-white border border-slate-100 rounded-2xl shadow-xs hover:border-rosa/40 hover:shadow-sm transition-all duration-300">
-                    <h5 className="font-mono text-[10px] font-bold uppercase tracking-widest text-azul mb-2">E-commerce de alto rendimiento</h5>
-                    <p className="text-xs text-azul/80 leading-relaxed font-light">
-                      Dirección analítica del canal de venta digital, logrando un incremento sostenido en la facturación y optimizando la tasa de conversión.
-                    </p>
-                  </div>
-                  <div className="p-5 bg-white border border-slate-100 rounded-2xl shadow-xs hover:border-rosa/40 hover:shadow-sm transition-all duration-300">
-                    <h5 className="font-mono text-[10px] font-bold uppercase tracking-widest text-azul mb-2">ExpoFarma</h5>
-                    <p className="text-xs text-azul/80 leading-relaxed font-light">
-                      Producción integral y coordinación comercial de este mega evento de negocios de la región, uniendo a los principales laboratorios nacionales, farmacias y celebridades en un espacio de networking de alto impacto.
-                    </p>
-                  </div>
-                </div>
+        {/* 4-column Case Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {cases.map((item, index) => (
+            <div 
+              key={index} 
+              className="group flex flex-col bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300"
+            >
+              {/* Image Container */}
+              <div className="aspect-[4/3] w-full overflow-hidden bg-slate-100">
+                <img 
+                  src={item.image} 
+                  alt={item.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  referrerPolicy="no-referrer"
+                />
               </div>
 
-              {/* Job 2: Randstad Argentina & Uruguay */}
-              <div className="relative pl-6 md:pl-10 border-l-2 border-[#C68E4B]/35 py-1">
-                {/* Timeline dot decoration */}
-                <div className="absolute top-2.5 left-[-6px] w-2.5 h-2.5 bg-white border border-[#C68E4B] rounded-full" />
-
-                <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
-                  <div>
-                    <h4 className="font-serif text-2xl font-bold text-azul">
-                      Digital Marketing Manager
-                    </h4>
-                    <p className="text-sm font-mono font-bold text-[#C68E4B] uppercase tracking-wider mt-1">
-                      Randstad Argentina & Uruguay
-                    </p>
-                  </div>
-                  <div className="flex flex-col md:items-end text-left md:text-right">
-                    <span className="inline-flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-widest text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full">
-                      <Calendar className="w-3.5 h-3.5 text-[#C68E4B]" /> 2017 – 2021
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-widest text-slate-400 mt-2">
-                      <MapPin className="w-3.5 h-3.5" /> Recursos Humanos & Transformación Digital
-                    </span>
-                  </div>
-                </div>
-
-                {/* Bullets */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
-                  <div className="p-5 bg-white border border-slate-100 rounded-2xl shadow-xs hover:border-rosa/40 hover:shadow-sm transition-all duration-300">
-                    <h5 className="font-mono text-[10px] font-bold uppercase tracking-widest text-azul mb-2">Estrategia Regional</h5>
-                    <p className="text-xs text-azul/80 leading-relaxed font-light">
-                      Gestión y monitoreo del presupuesto y la estrategia digital táctica para ambos países, liderando equipos internos y agencias externas.
-                    </p>
-                  </div>
-                  <div className="p-5 bg-white border border-slate-100 rounded-2xl shadow-xs hover:border-rosa/40 hover:shadow-sm transition-all duration-300">
-                    <h5 className="font-mono text-[10px] font-bold uppercase tracking-widest text-azul mb-2">Hito SEO</h5>
-                    <p className="text-xs text-azul/80 leading-relaxed font-light">
-                      Logré un incremento del +50% en el posicionamiento orgánico del portal corporativo, estabilizando el tráfico de alta calidad.
-                    </p>
-                  </div>
-                  <div className="p-5 bg-white border border-slate-100 rounded-2xl shadow-xs hover:border-rosa/40 hover:shadow-sm transition-all duration-300">
-                    <h5 className="font-mono text-[10px] font-bold uppercase tracking-widest text-azul mb-2">Visión Global</h5>
-                    <p className="text-xs text-azul/80 leading-relaxed font-light">
-                      Formé parte activa de "Project Talent Factory", el proyecto global de transformación digital de la corporación.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          {/* Section 2: ADN Emprendedor & Visión Visual */}
-          <div className="pt-12">
-            <div className="flex items-center gap-3 mb-8 pb-4">
-              <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-ocre font-bold bg-rosa/25 text-azul px-3 py-1 rounded-full inline-block">
-                ADN EMPRENDEDOR & VISIÓN VISUAL
-              </span>
-            </div>
-
-            <p className="font-serif italic text-xl md:text-2xl text-azul/95 max-w-3xl mb-8 leading-relaxed font-light">
-              "Porque para asesorar a un negocio, primero hay que haber estado ahí."
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              
-              {/* E-commerce & Retail Propio (Soft Rose Card) */}
-              <div className="p-8 rounded-[2rem] border border-rose-100 bg-[#fdf0ec] hover:shadow-md hover:scale-[1.01] transition-all duration-300 relative overflow-hidden flex flex-col justify-between">
+              {/* Text content */}
+              <div className="p-5 flex flex-col justify-between flex-grow">
                 <div>
-                  <h4 className="font-serif text-2xl font-bold text-rose-950 mb-1">
-                    E-commerce & Retail Propio
-                  </h4>
-                  <p className="text-[10px] font-mono uppercase tracking-widest text-rose-800 font-bold mb-6">
-                    Krizia Home
-                  </p>
-                  <p className="text-xs text-rose-900/90 leading-relaxed font-light">
-                    Creé y gestioné integralmente mi propia tienda de diseño y decoración, lo que me dio el "barro de la cancha" para entender el día a día de un e-commerce: desde el desarrollo técnico y el stock, hasta la experiencia de unboxing y fidelización.
+                  <h3 className="font-sans text-sm font-bold text-azul mb-2 leading-snug">
+                    {item.title}
+                  </h3>
+                  <p className="font-sans text-xs text-slate-500 leading-relaxed font-light mb-4">
+                    {item.desc}
                   </p>
                 </div>
-                <div className="mt-8 pt-4 border-t border-rose-900/10 text-[9px] font-mono uppercase tracking-wider text-rose-800">
-                  Experiencia Directa en Ventas
-                </div>
-              </div>
 
-              {/* Dirección Visual (Soft Mint-Sage Card) */}
-              <div className="p-8 rounded-[2rem] border border-slate-100 bg-[#eef5f1] hover:shadow-md hover:scale-[1.01] transition-all duration-300 relative overflow-hidden flex flex-col justify-between">
-                <div>
-                  <h4 className="font-serif text-2xl font-bold text-emerald-950 mb-1">
-                    Dirección Visual
-                  </h4>
-                  <p className="text-[10px] font-mono uppercase tracking-widest text-emerald-800 font-bold mb-6">
-                    Estudio de Fotografía
-                  </p>
-                  <p className="text-xs text-emerald-900/90 leading-relaxed font-light">
-                    Fundé mi propio estudio fotográfico, donde entreno mi ojo estético a diario. Esta faceta me permite garantizar que las estrategias de marketing que diseño tengan una identidad visual impecable, premium y coherente.
-                  </p>
-                </div>
-                <div className="mt-8 pt-4 border-t border-emerald-900/10 text-[9px] font-mono uppercase tracking-wider text-emerald-800">
-                  Estética & Composición
-                </div>
+                {/* Link */}
+                <a 
+                  href="#contacto"
+                  className="inline-flex items-center text-[11px] font-extrabold uppercase tracking-wider text-[#84CC16] hover:text-[#70AD12] transition-colors mt-auto"
+                >
+                  Ver caso completo <span className="ml-1 transition-transform group-hover:translate-x-1">→</span>
+                </a>
               </div>
-
-              {/* Impulso a Emprendedores (Classic Soft Warm White Card) */}
-              <div className="p-8 rounded-[2rem] border border-slate-100 bg-white hover:shadow-md hover:scale-[1.01] transition-all duration-300 relative overflow-hidden flex flex-col justify-between">
-                <div>
-                  <h4 className="font-serif text-2xl font-bold text-azul mb-1">
-                    Impulso a Emprendedores
-                  </h4>
-                  <p className="text-[10px] font-mono uppercase tracking-widest text-ocre font-bold mb-6">
-                    Asesoramiento & Mentoría
-                  </p>
-                  <p className="text-xs text-azul/80 leading-relaxed font-light">
-                    Traduzco toda mi experiencia corporativa en asesoramiento práctico para proyectos que están naciendo. Los ayudo a fundar bases sólidas, ordenar su comunicación y validar sus ideas de negocio sin perder tiempo ni presupuesto.
-                  </p>
-                </div>
-                <div className="mt-8 pt-4 border-t border-slate-100 text-[9px] font-mono uppercase tracking-wider text-ocre">
-                  Metodología Ágil
-                </div>
-              </div>
-
             </div>
-          </div>
-
+          ))}
         </div>
 
       </div>

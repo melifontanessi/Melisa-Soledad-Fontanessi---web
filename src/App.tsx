@@ -4,8 +4,9 @@ import Hero from './components/Hero';
 import Approach from './components/Approach';
 import Services from './components/Services';
 import Experience from './components/Experience';
-import InstagramFeed from './components/InstagramFeed';
+import SocialAndStreaming from './components/SocialAndStreaming';
 import SubstackFeed from './components/SubstackFeed';
+import InstagramFeed from './components/InstagramFeed';
 import Contact from './components/Contact';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 
@@ -29,11 +30,14 @@ export default function App() {
         {/* Tab-driven simplified, constructive professional experience timeline (Drogueria, Randstad) */}
         <Experience />
 
-        {/* INSTAGRAM GRID: Showcasing recent & upcoming daily visual digital branding tips */}
-        <InstagramFeed />
+        {/* Instagram info and FOMO Streaming participation section */}
+        <SocialAndStreaming />
 
         {/* Substack blog article dynamic manager feed powered by localStorage */}
         <SubstackFeed />
+
+        {/* Biography: Soy Melisa Fontanessi */}
+        <InstagramFeed />
 
         {/* Dynamic secure contact forms, copy-to-clipboard elements, & footer signature */}
         <Contact />

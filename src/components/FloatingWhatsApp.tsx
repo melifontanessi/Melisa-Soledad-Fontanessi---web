@@ -27,8 +27,8 @@ export default function FloatingWhatsApp() {
           >
             <X className="w-3.5 h-3.5" />
           </button>
-          <div className="flex items-center gap-1.5 text-rosa font-mono text-[9px] font-bold uppercase tracking-widest">
-            <Sparkles className="w-3 h-3 text-ocre fill-ocre" />
+          <div className="flex items-center gap-1.5 text-[#FF3B7A] font-mono text-[9px] font-bold uppercase tracking-widest">
+            <Sparkles className="w-3 h-3 text-[#FF3B7A] fill-[#FF3B7A]" />
             CONSULTORÍA INMEDIATA
           </div>
           <p className="text-xs font-light text-slate-200 leading-relaxed pr-4">
@@ -39,7 +39,7 @@ export default function FloatingWhatsApp() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setShowPrompt(false)}
-            className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#C68E4B] hover:text-white transition-colors self-start border-b border-[#C68E4B] pb-0.5 mt-1"
+            className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#FF3B7A] hover:text-white transition-colors self-start border-b border-[#FF3B7A] pb-0.5 mt-1"
           >
             Escribir ahora →
           </a>

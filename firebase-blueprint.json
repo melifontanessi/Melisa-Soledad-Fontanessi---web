@@ -1,0 +1,58 @@
+{
+  "entities": {
+    "Message": {
+      "title": "Message",
+      "description": "Formularios de contacto de potenciales clientes",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Nombre del remitente"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Email de contacto"
+        },
+        "msg": {
+          "type": "string",
+          "description": "Mensaje o consulta"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Fecha y hora de creación"
+        }
+      },
+      "required": ["name", "email", "msg", "createdAt"]
+    },
+    "Subscriber": {
+      "title": "Subscriber",
+      "description": "Suscripciones al newsletter",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Email del suscriptor"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Fecha y hora de registro"
+        }
+      },
+      "required": ["email", "createdAt"]
+    }
+  },
+  "firestore": {
+    "messages/{messageId}": {
+      "schema": "Message",
+      "description": "Colección de mensajes recibidos a través del formulario de contacto"
+    },
+    "subscribers/{subscriberId}": {
+      "schema": "Subscriber",
+      "description": "Colección de correos de suscriptores al newsletter"
+    }
+  }
+}
