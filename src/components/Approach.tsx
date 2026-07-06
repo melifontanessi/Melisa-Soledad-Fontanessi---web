@@ -152,20 +152,12 @@ export default function Approach() {
 
           {/* Stepper Timeline Progress Flow */}
           <div className="relative">
-            {/* Horizontal Line connecting steps (hidden on mobile, visible on desktop) */}
-            <div className="hidden lg:block absolute top-12 left-8 right-8 h-[2px] border-t-2 border-dashed border-slate-200 -z-10" />
-
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8">
               {steps.map((item, index) => (
                 <div key={index} className="flex flex-col items-center lg:items-start text-center lg:text-left relative">
                   
-                  {/* Circular Number Indicator */}
-                  <div className="w-12 h-12 rounded-full bg-[#1E2D42] text-white flex items-center justify-center font-bold text-sm mb-6 shadow-md relative z-10">
-                    {item.num}
-                  </div>
-
                   {/* Icon wrapper */}
-                  <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center mb-4 border border-slate-100 shadow-2xs">
+                  <div className="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center mb-4 border border-slate-100 shadow-2xs">
                     {item.icon}
                   </div>
 

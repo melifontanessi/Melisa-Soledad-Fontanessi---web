@@ -40,9 +40,15 @@ export default function InstagramFeed() {
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative w-full max-w-sm aspect-[4/5] rounded-[2rem] overflow-hidden bg-rose-50 shadow-md">
               <img 
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" 
+                src="sobre-mi.jpg" 
                 alt="Melisa Fontanessi Portrait" 
                 className="w-full h-full object-cover grayscale brightness-95 contrast-105"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  if (target.src.endsWith('sobre-mi.jpg') || target.src.includes('/sobre-mi.jpg')) {
+                    target.src = 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80';
+                  }
+                }}
                 referrerPolicy="no-referrer"
               />
               {/* Soft pink ambient frame overlay */}

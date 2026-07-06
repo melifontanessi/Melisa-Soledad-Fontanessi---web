@@ -99,11 +99,17 @@ export default function Hero() {
               {/* Main Portrait Frame with highly rounded corners (3xl) */}
               <div className="overflow-hidden bg-[#FDFCFB] rounded-full shadow-2xl relative w-11/12 aspect-square flex items-center justify-center p-2 border border-slate-100">
                 <img
-                  src="https://github.com/melifontanessi.png"
+                  src="perfil.jpg"
                   alt="Melisa Fontanessi"
                   className="w-full h-full object-cover rounded-full bg-slate-50 transition-all duration-700 hover:scale-[1.03]"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80';
+                    const target = e.target as HTMLImageElement;
+                    // If local profile image fails, try github profile image, then fallback to unsplash
+                    if (target.src.endsWith('perfil.jpg') || target.src.includes('/perfil.jpg')) {
+                      target.src = 'https://github.com/melifontanessi.png';
+                    } else if (target.src.includes('github.com')) {
+                      target.src = 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80';
+                    }
                   }}
                   referrerPolicy="no-referrer"
                 />

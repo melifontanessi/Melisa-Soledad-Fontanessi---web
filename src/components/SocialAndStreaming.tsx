@@ -78,9 +78,15 @@ export default function SocialAndStreaming() {
               <div className="md:col-span-5 relative">
                 <div className="aspect-[4/3] md:aspect-[3/4] rounded-2xl overflow-hidden shadow-sm border border-slate-100 bg-slate-50">
                   <img 
-                    src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=600&q=80"
+                    src="fomo-streaming.jpg"
                     alt="Melisa Fontanessi en FOMO Streaming"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      if (target.src.endsWith('fomo-streaming.jpg') || target.src.includes('/fomo-streaming.jpg')) {
+                        target.src = 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=600&q=80';
+                      }
+                    }}
                     referrerPolicy="no-referrer"
                   />
                   {/* Visual microphone element overlay representing the podcast photo */}
